@@ -1,0 +1,23 @@
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #efebff;
+    margin: 0;
+    padding: 20px;
+    color: #383385;
+}
+
+.header {
+    text-align: center;
+    color: #383385;
+    display: flex;
+
+}
+
+.searchbar {
+    margin: 20px 0;
+    background: #bebcf0;
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
