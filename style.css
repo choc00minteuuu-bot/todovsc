@@ -21,3 +21,23 @@ body {
     display: flex;
     align-items: center;
 }
+
+.addTask {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#list {
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.star {
+    margin-left: auto;
+}
