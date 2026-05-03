@@ -50,3 +50,51 @@ document.addEventListener("click", (e) => {
             e.target.textContent === "☆" ? "★" : "☆";
     }
 });
+
+const canvas = document.getElementById("effectCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function spray(x, y) {
+    for (let i = 0; i < 40; i++) {
+        particles.push({
+            x,
+            y,
+            vx: (Math.random() - 0.5) * 10,
+            vy: (Math.random() - 1) * 10,
+            life: 80
+        });
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+        let p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.25;
+        p.life--;
+
+        ctx.fillStyle = `hsl(${Math.random()*360}, 100%, 60%)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (p.life <= 0) particles.splice(i, 1);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+document.getElementById("addBtn").addEventListener("click", () => {
+    spray(window.innerWidth / 2, window.innerHeight / 2);
+});
